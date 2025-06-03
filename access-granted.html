@@ -40,11 +40,7 @@
   <p>Redirecting to your stream content...</p>
 
   <script>
-    // Save 5-minute access flag
-    const expiresAt = Date.now() + (24 * 60 * 60 * 1000);
-    localStorage.setItem('verifiedUntil', expiresAt);
-
-    // Also set a cookie for 5-minute access
+    // Set only cookie now, not localStorage
     document.cookie = "verified_access=true; max-age=86400; path=/";
     // Get URL and title from query params
     const params = new URLSearchParams(window.location.search);
