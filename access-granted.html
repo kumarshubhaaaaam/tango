@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Access Granted</title>
-  
+  <title>Tango Leaked - Access Granted</title>
   
   <style>
     body {
@@ -40,7 +39,11 @@
   <p>Redirecting to your stream content...</p>
 
   <script>
-    // Set only cookie now, not localStorage
+    // Save 5-minute access flag
+    const expiresAt = Date.now() + (24 * 60 * 60 * 1000);
+    localStorage.setItem('verifiedUntil', expiresAt);
+
+    // Also set a cookie for 5-minute access
     document.cookie = "verified_access=true; max-age=86400; path=/";
     // Get URL and title from query params
     const params = new URLSearchParams(window.location.search);
