@@ -102,10 +102,9 @@
     const url = params.get('url');
     const title = params.get('title');
 
-    const accessKey = `verified_until`;
+    const verifiedCookie = document.cookie.includes("verified_access=true");
 
-    const verifiedUntil = localStorage.getItem(accessKey);
-    if (verifiedUntil && Date.now() < Number(verifiedUntil)) {
+    if (verifiedCookie) {
       window.location.href = `https://tangoleaked.netlify.app/access-granted.html?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title || "")}`;
     }
 
