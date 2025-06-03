@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="theme-color" content="#1c1c1c">
-  <title>Tango Live</title>
+  <title>Tango Leaked - Stream</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
+
+  <style>
     * {
       margin: 0;
       padding: 0;
@@ -31,89 +32,98 @@
       pointer-events: none;
     }
 
-    .video-section {
-      text-align: center;
-      margin-top: 2rem;
-    }
-
-    .section-heading {
-      text-align: center;
-      font-size: 2.5rem;
-      color: white;
-      font-weight: bold;
-      position: relative;
-      display: inline-block;
-      margin: 2rem auto 1rem;
-    }
-
-    .section-heading::after {
-      content: "";
-      display: block;
-      height: 5px;
-      width: 60%;
-      margin: 0.5rem auto 0;
-      background-color: #00d2fc;
-      border-radius: 10px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      padding: 0 2rem;
-    }
-
-    .card {
+  .card {
       background-color: #1c1c1c;
       padding: 1rem;
       border-radius: 0.75rem;
-      text-align: center;
-      border: 2px solid transparent;
-      opacity: 1;
-      transform: scale(1);
-      pointer-events: auto;
-      user-select: none;
+      border: 1.5px solid #00d2fc;
+      width: 90%;
+      max-width: 800px;
+      margin: 2rem auto;
+      box-shadow: 0 0 12px rgba(0, 255, 226, 0.2);
+      position: relative;
     }
 
-    .card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px #00d2fc;
-      border: 2px solid #00d2fc;
-    }
-
-    .card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
+    .iframe-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
       border-radius: 0.5rem;
-      margin-bottom: 1rem;
-      pointer-events: none;
     }
 
-    .card img::selection {
-      background: none;
-    }
-
-    .card h3 {
-      font-size: 1.2rem;
-      margin-bottom: 0.8rem;
-    }
-
-    .card button {
-      padding: 0.8rem;
+    .iframe-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
-      font-size: 1rem;
-      font-weight: bold;
-      background: linear-gradient(to right, #00d2fc, #00d2fc);
-      color: black;
+      height: 100%;
       border: none;
       border-radius: 0.5rem;
-      cursor: pointer;
-      transition: background 0.3s ease;
     }
 
-    .card button:hover {
-      background: linear-gradient(to right, #00d2fc, #00d2fc);
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 300px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      width: 80px;
+      height: 80px;
+    }
+
+    .spinner {
+      border: 6px solid rgba(255, 255, 255, 0.1);
+      border-top: 6px solid #00ffe5;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin: 1rem 0;
+      text-align: center;
+    }
+
+    .back-btn, .close-btn {
+      position: absolute;
+      top: 10px;
+      padding: 6px 12px;
+      border: none;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .back-btn {
+      left: 10px;
+      background: #00aaff;
+      color: white;
+    }
+
+    .back-btn:hover {
+      background: #0088cc;
+    }
+
+    .close-btn {
+      right: 10px;
+      background: #ff4c4c;
+      color: white;
+    }
+
+    .close-btn:hover {
+      background: #ff1a1a;
     }
 
     .footer {
@@ -123,188 +133,136 @@
       font-size: 0.9rem;
     }
 
-    .pagination {
+    .button-wrapper {
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .back-home-btn {
+      background: #ff4c4c;
+      color: white;
+      padding: 10px 24px;
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 0 10px rgba(255, 76, 76, 0.5);
+      transition: background 0.3s ease;
+    }
+
+    .back-home-btn:hover {
+      background: #e60000;
+    }
+
+    .verify-lock {
       text-align: center;
       margin: 2rem auto;
+      padding: 2rem;
+      max-width: 700px;
+      background: #1a1a1a;
+      border: 2px dashed #00ffe5;
+      border-radius: 1rem;
     }
 
-    .pagination button {
-      background: #333;
+    .verify-btn {
+      background: linear-gradient(to right, #ff6a00, #ff9472);
+      padding: 12px 24px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 2rem;
       color: white;
-      padding: 0.5rem 1rem;
-      border: 1px solid #555;
-      margin: 0 0.2rem;
       cursor: pointer;
-      border-radius: 5px;
-    }
-
-    .pagination button.active {
-      background: #00d2fc;
-      color: black;
       font-weight: bold;
+      margin-top: 1rem;
     }
 
-    .skeleton {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      border-radius: 0.75rem;
-      padding: 1rem;
-      text-align: center;
-      animation: pulse 1.5s infinite ease-in-out;
-    }
-
-    .skeleton .img {
-      width: 100%;
-      height: 180px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 0.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .skeleton .title {
-      height: 20px;
-      width: 80%;
-      background: rgba(255,255,255,0.1);
-      margin: 0 auto 1rem;
-      border-radius: 0.4rem;
-    }
-
-    .skeleton .button {
-      height: 40px;
-      width: 100%;
-      background: rgba(255,255,255,0.1);
-      border-radius: 0.5rem;
-    }
-
-    @keyframes pulse {
-      0% { opacity: 1; }
-      50% { opacity: 0.5; }
-      100% { opacity: 1; }
+    .verify-btn:hover {
+      background: linear-gradient(to right, #ff8c42, #ffa87d);
     }
   </style>
 </head>
 <body>
 <canvas id="particles-bg"></canvas>
-
-<div class="video-section">
-  <h2 class="section-heading">All Videos</h2><br><br>
+<br>
+<br>
+<br>
+<br>
+<div class="button-wrapper">
+  <a href="index.html" class="back-home-btn">Back</a>
 </div>
 
-<section class="grid" id="postGrid"></section>
-<div class="pagination" id="pagination"></div>
+<div id="verificationLock" class="verify-lock" style="display: none;">
+  <h2>Verification Required</h2>
+  <p>Please verify once to unlock access to all videos for the next 24 hours.</p>
+  <button class="verify-btn" onclick="startVerification()">Verify Now</button>
+</div>
+
+<div class="card" id="streamCard" style="display: none;">
+  <div class="title" id="videoTitle">Streaming...</div>
+  <div id="loader" class="loading"><div class="spinner"></div></div>
+  <div class="iframe-container" id="videoContainer" style="display: none;">
+    <iframe id="videoPlayer" allowfullscreen></iframe>
+  </div>
+</div>
 
 <script>
-  const sheetID = '1p_6y0GDDCpcvrsUvGcJHnTMLSXZ2t-cCniwzcYfWpqQ';
-  const sheetName = 'Sheet1';
-  const query = encodeURIComponent('SELECT A, B, C');
-  const url = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?sheet=${sheetName}&tq=${query}`;
-  const postsPerPage = 10;
-  let allPosts = [];
+  const urlParams = new URLSearchParams(window.location.search);
+  const streamUrl = urlParams.get('url');
+  const title = urlParams.get('title') || "Streaming...";
 
-  function getCookie(name) {
-    const v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
-    return v ? v[2] : null;
-  }
+  function isVerified() {
+  const verifiedCookie = document.cookie.includes("verified_access=true");
+  const verifiedUntil = parseInt(localStorage.getItem('verifiedUntil') || '0', 10);
+  return verifiedCookie && verifiedUntil > Date.now();
+}
 
-  const skeletonKey = 'skeletonLastShown';
-  const now = Date.now();
-  const lastShown = localStorage.getItem(skeletonKey);
-  const showSkeleton = !lastShown || now - parseInt(lastShown) > 86400000;
+const streamCard = document.getElementById("streamCard");
+const verificationLock = document.getElementById("verificationLock");
 
-  if (showSkeleton) {
-    showSkeletons();
-    localStorage.setItem(skeletonKey, now.toString());
-  }
+if (isVerified()) {
+  showStream();
+} else {
+  verificationLock.style.display = "block";
+}
 
-  fetch(url)
-    .then(res => res.text())
-    .then(rep => {
-      const json = JSON.parse(rep.substring(47).slice(0, -2));
-      const data = json.table.rows;
-      allPosts = data.map((row, index) => ({
-        id: `post-${index}`,
-        title: row.c[0]?.v || 'Untitled',
-        imageUrl: row.c[1]?.v || '',
-        watchUrl: row.c[2]?.v || '#'
-      }));
-      if (showSkeleton) {
-        setTimeout(() => {
-          removeSkeletons();
-          renderPagination();
-          renderPosts(1);
-        }, 3000);
-      } else {
-        removeSkeletons();
-        renderPagination();
-        renderPosts(1);
-      }
-    });
+  function showStream() {
+    verificationLock.style.display = "none";
+    streamCard.style.display = "block";
+    document.getElementById("videoTitle").innerText = decodeURIComponent(title);
 
-  function showSkeletons() {
-    const grid = document.getElementById('postGrid');
-    for (let i = 0; i < postsPerPage; i++) {
-      const skeleton = document.createElement('div');
-      skeleton.className = 'skeleton';
-      skeleton.innerHTML = `
-        <div class="img"></div>
-        <div class="title"></div>
-        <div class="button"></div>
-      `;
-      grid.appendChild(skeleton);
+    if (!streamUrl) {
+      document.getElementById('loader').innerText = "No video URL provided.";
+      return;
     }
+
+    const iframe = document.getElementById('videoPlayer');
+    iframe.src = streamUrl;
+
+    iframe.onload = () => {
+      document.getElementById('loader').style.display = 'none';
+      document.getElementById('videoContainer').style.display = 'block';
+    };
   }
 
-  function removeSkeletons() {
-    document.getElementById('postGrid').innerHTML = '';
+  function startVerification() {
+    const currentUrl = encodeURIComponent(window.location.href);
+    const apiToken = '5fb415cd7e6b42fd8ba25416066c25f44c85587b';
+    const apiUrl = `https://linkshortify.com/api?api=${apiToken}&url=${currentUrl}`;
+
+    fetch(apiUrl)
+      .then(res => res.json())
+      .then(result => {
+        if (result.status === 'error') {
+          alert(result.message);
+          return;
+        }
+        window.location.href = result.shortenedUrl;
+      })
+      .catch(() => alert("Failed to generate ad link."));
   }
 
-  function renderPosts(page) {
-    const grid = document.getElementById('postGrid');
-    grid.innerHTML = '';
-    const start = (page - 1) * postsPerPage;
-    const end = start + postsPerPage;
-    const pagePosts = allPosts.slice(start, end);
-
-    pagePosts.forEach(post => {
-      const card = document.createElement('div');
-      card.className = 'card';
-      card.setAttribute('data-post-id', post.id);
-      card.innerHTML = `
-        <img src="${post.imageUrl}" alt="${post.title}" oncontextmenu="return false;" draggable="false" loading="lazy" decoding="async" width="100%" height="180" fetchpriority="low"/>
-        <h3>${post.title}</h3>
-        <button onclick="handleWatchClick('${encodeURIComponent(post.watchUrl)}', '${encodeURIComponent(post.title)}')">Watch</button>
-      `;
-      grid.appendChild(card);
-    });
-  }
-
-  function handleWatchClick(encodedUrl, encodedTitle) {
-    const verified = getCookie('verified_access');
-    if (verified === 'true') {
-      window.open(`stream.html?url=${encodedUrl}&title=${encodedTitle}`, '_blank');
-    } else {
-      window.location.href = `verify.html?url=${encodedUrl}&title=${encodedTitle}`;
-    }
-  }
-
-  function renderPagination() {
-    const pagination = document.getElementById('pagination');
-    const totalPages = Math.ceil(allPosts.length / postsPerPage);
-    pagination.innerHTML = '';
-
-    for (let i = 1; i <= totalPages; i++) {
-      const btn = document.createElement('button');
-      btn.textContent = i;
-      btn.addEventListener('click', () => {
-        renderPosts(i);
-        document.querySelectorAll('.pagination button').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-      });
-      if (i === 1) btn.classList.add('active');
-      pagination.appendChild(btn);
-    }
-  }
-
+  // Replaced particle animation with white particles (verify-style)
   const canvas = document.getElementById('particles-bg');
   const ctx = canvas.getContext('2d');
   let particles = [];
@@ -362,5 +320,3 @@
 </script>
 </body>
 </html>
-
-
