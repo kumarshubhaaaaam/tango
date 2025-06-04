@@ -63,17 +63,18 @@
       padding: 0 2rem;
     }
 
-    .card {
-      background-color: #1c1c1c;
-      padding: 1rem;
-      border-radius: 0.75rem;
-      text-align: center;
-      border: 2px solid transparent;
-      opacity: 1;
-      transform: scale(1);
-      pointer-events: auto;
-      user-select: none;
-    }
+.card {
+  background-color: #1c1c1c;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  text-align: center;
+  border: 2px solid transparent;
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+  user-select: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease; 
+}
 
     .card:hover {
       transform: scale(1.05);
@@ -84,10 +85,11 @@
     .card img {
       width: 100%;
       height: 180px;
-      object-fit: cover;
+      object-fit: contain;
       border-radius: 0.5rem;
       margin-bottom: 1rem;
       pointer-events: none;
+      background-color: #111;
     }
 
     .card img::selection {
@@ -192,7 +194,9 @@
 
 <section class="grid" id="postGrid"></section>
 <div class="pagination" id="pagination"></div>
-
+<div class="footer">
+  <p>Disclaimer: All videos featured on this site are sourced from external platforms. We do not host or own any content. If you believe your rights are being infringed, please contact us on Instagram</p>
+</div>
 <script>
   const sheetID = '12gmFV5cvduBskyUrOtJVsudzmg2mUgDpLby8aqvtFkk';
   const sheetName = 'Sheet1';
@@ -209,7 +213,7 @@
   const skeletonKey = 'skeletonLastShown';
   const now = Date.now();
   const lastShown = localStorage.getItem(skeletonKey);
-  const showSkeleton = !lastShown || now - parseInt(lastShown) > 86400000;
+  const showSkeleton = !localStorage.getItem(skeletonKey);
 
   if (showSkeleton) {
     showSkeletons();
