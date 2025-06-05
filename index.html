@@ -63,18 +63,18 @@
       padding: 0 2rem;
     }
 
-.card {
-  background-color: #1c1c1c;
-  padding: 1rem;
-  border-radius: 0.75rem;
-  text-align: center;
-  border: 2px solid transparent;
-  opacity: 1;
-  transform: scale(1);
-  pointer-events: auto;
-  user-select: none;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease; 
-}
+    .card {
+      background-color: #1c1c1c;
+      padding: 1rem;
+      border-radius: 0.75rem;
+      text-align: center;
+      border: 2px solid transparent;
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: auto;
+      user-select: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+    }
 
     .card:hover {
       transform: scale(1.05);
@@ -90,10 +90,6 @@
       margin-bottom: 1rem;
       pointer-events: none;
       background-color: #111;
-    }
-
-    .card img::selection {
-      background: none;
     }
 
     .card h3 {
@@ -182,42 +178,36 @@
       0% { opacity: 1; }
       50% { opacity: 0.5; }
       100% { opacity: 1; }
-    }
-  </style>
+</style>
 </head>
 <body>
 <canvas id="particles-bg"></canvas>
-  
+
+<!-- ALL VIDEOS SECTION -->
 <div class="video-section">
   <h2 class="section-heading">All Videos</h2><br><br>
 </div>
-
 <section class="grid" id="postGrid"></section>
 <div class="pagination" id="pagination"></div>
+
 <div class="footer">
-  <p>Disclaimer: All videos featured on this site are sourced from external platforms. We do not host or own any content. If you believe your rights are being infringed, please contact us on Instagram</p>
+  <p>Disclaimer: All videos featured on this site are sourced from external platforms. We do not host or own any content. If you believe your rights are being infringed, please contact us on Telegram.</p>
 </div>
+
 <script>
-  const sheetID = '12gmFV5cvduBskyUrOtJVsudzmg2mUgDpLby8aqvtFkk';
+  const sheetID = '1xKxmeFyA79YutiEiUn-Y50HvEAY8qOYz9y2ypzQ0Mac';
   const sheetName = 'Sheet1';
   const query = encodeURIComponent('SELECT A, B, C');
   const url = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?sheet=${sheetName}&tq=${query}`;
   const postsPerPage = 10;
   let allPosts = [];
 
-  function getCookie(name) {
-    const v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
-    return v ? v[2] : null;
-  }
-
-  const skeletonKey = 'skeletonLastShown';
-  const now = Date.now();
-  const lastShown = localStorage.getItem(skeletonKey);
+  const skeletonKey = 'skeletonShown';
   const showSkeleton = !localStorage.getItem(skeletonKey);
 
   if (showSkeleton) {
     showSkeletons();
-    localStorage.setItem(skeletonKey, now.toString());
+    localStorage.setItem(skeletonKey, 'true');
   }
 
   fetch(url)
@@ -274,21 +264,12 @@
       card.className = 'card';
       card.setAttribute('data-post-id', post.id);
       card.innerHTML = `
-        <img src="${post.imageUrl}" alt="${post.title}" oncontextmenu="return false;" draggable="false" loading="lazy" decoding="async" width="100%" height="180" fetchpriority="low"/>
+        <img src="${post.imageUrl}" alt="${post.title}" oncontextmenu="return false;" draggable="false" loading="lazy" decoding="async"/>
         <h3>${post.title}</h3>
-        <button onclick="handleWatchClick('${encodeURIComponent(post.watchUrl)}', '${encodeURIComponent(post.title)}')">Watch</button>
+        <button onclick="window.open('${post.watchUrl}', '_blank')">Watch</button>
       `;
       grid.appendChild(card);
     });
-  }
-
-  function handleWatchClick(encodedUrl, encodedTitle) {
-    const verified = getCookie('verified_access');
-    if (verified === 'true') {
-      window.open(`stream.html?url=${encodedUrl}&title=${encodedTitle}`, '_blank');
-    } else {
-      window.location.href = `verify.html?url=${encodedUrl}&title=${encodedTitle}`;
-    }
   }
 
   function renderPagination() {
@@ -309,6 +290,7 @@
     }
   }
 
+  // Background particles
   const canvas = document.getElementById('particles-bg');
   const ctx = canvas.getContext('2d');
   let particles = [];
