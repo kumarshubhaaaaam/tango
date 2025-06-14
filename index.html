@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="theme-color" content="#1c1c1c">
-  <title>Tango Leaked</title>
+  <title>Tango Leaked Videos</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
+  <script defer='91910' src='//api.linkshortify.com/verify.js'></script>
+  <style>
     * {
       margin: 0;
       padding: 0;
@@ -84,12 +85,12 @@
 
     .card img {
       width: 100%;
-      height: 180px;
-      object-fit: contain;
+      height: 160px;
+      object-fit: cover;
       border-radius: 0.5rem;
       margin-bottom: 1rem;
       pointer-events: none;
-      background-color: #111;
+      background-color: #000;
     }
 
     .card h3 {
@@ -151,14 +152,6 @@
       animation: pulse 1.5s infinite ease-in-out;
     }
 
-    .skeleton .img {
-      width: 100%;
-      height: 180px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 0.5rem;
-      margin-bottom: 1rem;
-    }
-
     .skeleton .title {
       height: 20px;
       width: 80%;
@@ -173,48 +166,55 @@
       background: rgba(255,255,255,0.1);
       border-radius: 0.5rem;
     }
-  .floating-contact {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: linear-gradient(45deg, #00d2fc, #007bff);
-  color: #fff;
-  padding: 0.75rem 1.2rem;
-  font-weight: bold;
-  font-size: 1rem;
-  border-radius: 50px;
-  text-decoration: none;
-  box-shadow: 0 4px 12px rgba(0, 210, 252, 0.5);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  z-index: 999;
-}
-.floating-contact:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 16px rgba(0, 210, 252, 0.8);
-  background: linear-gradient(45deg, #007bff, #00d2fc);
-}
+
+    .floating-contact {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(45deg, #00d2fc, #007bff);
+      color: #fff;
+      padding: 0.75rem 1.2rem;
+      font-weight: bold;
+      font-size: 1rem;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0, 210, 252, 0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      z-index: 999;
+    }
+
+    .floating-contact:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 16px rgba(0, 210, 252, 0.8);
+      background: linear-gradient(45deg, #007bff, #00d2fc);
+    }
 
     @keyframes pulse {
       0% { opacity: 1; }
       50% { opacity: 0.5; }
       100% { opacity: 1; }
-</style>
+    }
+  </style>
 </head>
 <body>
 <canvas id="particles-bg"></canvas>
-  <a href="mailto:contacttodelete@gmail.com" class="floating-contact">✉️ Contact</a>
+<a href="mailto:contacttodelete@gmail.com" class="floating-contact">✉️ Contact</a>
 
-<!-- ALL VIDEOS SECTION -->
+<!-- All Videos Section -->
 <div class="video-section">
   <h2 class="section-heading">All Videos</h2><br><br>
 </div>
 <section class="grid" id="postGrid"></section>
 <div class="pagination" id="pagination"></div>
 
-<div class="footer">
-  <p>Disclaimer: All videos featured on this site are sourced from external platforms. We do not host or own any content. If you believe your rights are being infringed, please contact us on 💌 Mail.</p>
-</div>
-
+<!-- Disclaimer Footer -->
+<footer style="margin: 3rem auto; max-width: 90%; background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); border-radius: 1rem; padding: 2rem; text-align: center; color: #e0e0e0; font-size: 1rem; box-shadow: 0 0 20px rgba(0,210,252,0.2);">
+  <p style="margin: 0;">
+    ⚠️ <strong>Disclaimer:</strong><br>
+    All videos featured on this site are sourced from external platforms 🌐. We do not host or own any of the content. If you believe your rights have been infringed, or wish to request removal, please contact us 📩 at<br>
+    <a href="mailto:contacttodelete@gmail.com" style="color: #00d2fc; text-decoration: underline; font-weight: bold;">contacttodelete@gmail.com</a>
+  </p>
+</footer>
 <script>
   const sheetID = '1vIPuBp0jX4hXeZoChijRcnJSf8J2tIHPm-PlBALqf58';
   const sheetName = 'Sheet1';
@@ -223,12 +223,14 @@
   const postsPerPage = 10;
   let allPosts = [];
 
-  const skeletonKey = 'skeletonShown';
-  const showSkeleton = !localStorage.getItem(skeletonKey);
+  const skeletonKey = 'skeletonLastShown';
+  const now = Date.now();
+  const lastShown = localStorage.getItem(skeletonKey);
+  const showSkeleton = !lastShown || now - parseInt(lastShown) > 86400000;
 
   if (showSkeleton) {
     showSkeletons();
-    localStorage.setItem(skeletonKey, 'true');
+    localStorage.setItem(skeletonKey, now.toString());
   }
 
   fetch(url)
@@ -287,7 +289,7 @@
       card.innerHTML = `
         <img src="${post.imageUrl}" alt="${post.title}" oncontextmenu="return false;" draggable="false" loading="lazy" decoding="async"/>
         <h3>${post.title}</h3>
-        <button onclick="window.open('${post.watchUrl}', '_blank')">Watch</button>
+        <button onclick="alert('Access system disabled');">Watch</button>
       `;
       grid.appendChild(card);
     });
@@ -311,7 +313,6 @@
     }
   }
 
-  // Background particles
   const canvas = document.getElementById('particles-bg');
   const ctx = canvas.getContext('2d');
   let particles = [];
