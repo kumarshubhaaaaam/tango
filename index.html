@@ -173,6 +173,26 @@
       background: rgba(255,255,255,0.1);
       border-radius: 0.5rem;
     }
+  .floating-contact {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(45deg, #00d2fc, #007bff);
+  color: #fff;
+  padding: 0.75rem 1.2rem;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 210, 252, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 999;
+}
+.floating-contact:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 210, 252, 0.8);
+  background: linear-gradient(45deg, #007bff, #00d2fc);
+}
 
     @keyframes pulse {
       0% { opacity: 1; }
@@ -182,6 +202,7 @@
 </head>
 <body>
 <canvas id="particles-bg"></canvas>
+  <a href="mailto:contacttodelete@gmail.com" class="floating-contact">✉️ Contact</a>
 
 <!-- ALL VIDEOS SECTION -->
 <div class="video-section">
@@ -191,7 +212,7 @@
 <div class="pagination" id="pagination"></div>
 
 <div class="footer">
-  <p>Disclaimer: All videos featured on this site are sourced from external platforms. We do not host or own any content. If you believe your rights are being infringed, please contact us on <a href="https://t.me/yourusername" style="color: #00d2fc; text-decoration: underline;">Telegram</a>.</p>
+  <p>Disclaimer: All videos featured on this site are sourced from external platforms. We do not host or own any content. If you believe your rights are being infringed, please contact us on 💌 Mail.</p>
 </div>
 
 <script>
