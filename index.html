@@ -215,7 +215,7 @@
     <a href="mailto:contacttodelete@gmail.com" style="color: #00d2fc; text-decoration: underline; font-weight: bold;">contacttodelete@gmail.com</a>
   </p>
 </footer>
-<script>
+    <script>
   const sheetID = '1vIPuBp0jX4hXeZoChijRcnJSf8J2tIHPm-PlBALqf58';
   const sheetName = 'Sheet1';
   const query = encodeURIComponent('SELECT A, B, C');
@@ -289,10 +289,15 @@
       card.innerHTML = `
         <img src="${post.imageUrl}" alt="${post.title}" oncontextmenu="return false;" draggable="false" loading="lazy" decoding="async"/>
         <h3>${post.title}</h3>
-        <button onclick="alert('Access system disabled');">Watch</button>
+        <button onclick="handleWatchClick('${encodeURIComponent(post.watchUrl)}', '${encodeURIComponent(post.title)}')">Watch</button>
       `;
       grid.appendChild(card);
     });
+  }
+
+  function handleWatchClick(encodedUrl, encodedTitle) {
+    const decodedUrl = decodeURIComponent(encodedUrl);
+    window.open(decodedUrl, '_blank');
   }
 
   function renderPagination() {
@@ -367,6 +372,6 @@
 
   initParticles();
   animateParticles();
-</script>
+    </script>
 </body>
 </html>
