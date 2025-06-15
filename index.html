@@ -215,6 +215,7 @@
     <a href="mailto:contacttodelete@gmail.com" style="color: #00d2fc; text-decoration: underline; font-weight: bold;">contacttodelete@gmail.com</a>
   </p>
 </footer>
+    <!-- Everything above remains unchanged -->
     <script>
   const sheetID = '1vIPuBp0jX4hXeZoChijRcnJSf8J2tIHPm-PlBALqf58';
   const sheetName = 'Sheet1';
@@ -244,6 +245,10 @@
         imageUrl: row.c[1]?.v || '',
         watchUrl: row.c[2]?.v || '#'
       }));
+
+      // 🔀 Shuffle posts randomly
+      shuffleArray(allPosts);
+
       if (showSkeleton) {
         setTimeout(() => {
           removeSkeletons();
@@ -256,6 +261,14 @@
         renderPosts(1);
       }
     });
+
+  // 🔁 Fisher-Yates Shuffle Function
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
 
   function showSkeletons() {
     const grid = document.getElementById('postGrid');
@@ -373,5 +386,7 @@
   initParticles();
   animateParticles();
     </script>
+</body>
+</html>
 </body>
 </html>
